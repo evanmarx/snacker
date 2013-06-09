@@ -5,9 +5,7 @@ class SnacksController < ApplicationController
 	end 
 
 	def create
-		p params 
-
-		@snack = Snack.new(params)
+		@snack = Snack.new(params[:snack])
 
 		@snack.save
 
