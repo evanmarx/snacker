@@ -1,7 +1,8 @@
 <pre><%= params %></pre>
 
 <form action="<%= snacks_path %>" method="post">
-
+	<input type="hidden" name="snack[source_url]" value="<%= params[:srcUrl] %>">
+	<input type="hidden" name="snack[traceback_url]" value="<%= params[:url] %>">
 
 	<input type="submit" name="commit" value="Snack!">
 </form> 
