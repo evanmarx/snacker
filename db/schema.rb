@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626181942) do
+ActiveRecord::Schema.define(:version => 20130629175908) do
 
   create_table "snacks", :force => true do |t|
     t.string   "source_url"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20130626181942) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "traceback_url"
+    t.string   "content_type"
+    t.string   "selected_text"
   end
 
   add_index "snacks", ["trail_id"], :name => "index_snacks_on_trail_id"
@@ -34,8 +36,11 @@ ActiveRecord::Schema.define(:version => 20130626181942) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "username"
+    t.string   "remember_token"
+    t.string   "password_digest"
   end
 
 end

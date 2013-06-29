@@ -1,8 +1,27 @@
-<pre><%= params %></pre>
+<pre>
+	<%= params %> 
+</pre>
 
 <form action="<%= snacks_path %>" method="post">
 	<input type="hidden" name="snack[source_url]" value="<%= params[:srcUrl] %>">
 	<input type="hidden" name="snack[traceback_url]" value="<%= params[:url] %>">
+
+	<select name="snack[trail_id]">
+		<% @trails.each do |trail| %>
+		<option value="<%= trail.id %>" <%= "selected" if @trails.first == trail %>><%= trail.query %></option>
+		<% end %> 
+	</select> 
+
+	<br>
+	<input type="radio" name="snack[content_type]" value="image" <%= "checked" if params[:type] == "image" %> >Image
+	<br>
+	<input type="radio" name="snack[content_type]" value="text" <%= "checked" if params[:type] == "text" %>>Text
+	<br>
+	<input type="radio" name="snack[content_type]" value="link" <%= "checked" if params[:type] == "link" %>>Link
+	<br>
+	<input type="radio" name="snack[content_type]" value="page" <%= "checked" if params[:type] == "page" %>>Whole Page
+	<br>
+
 
 	<input type="submit" name="commit" value="Snack!">
 </form> 

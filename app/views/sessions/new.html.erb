@@ -1,0 +1,5 @@
+<%= form_tag(session_path, class: 'muted form-inline pull-right') do %>
+	<%= text_field_tag :username, nil, class:"input-small", placeholder:"Username" %>
+	<%= password_field_tag :password, nil, class:"input-small", placeholder:"Password" %>
+	<%= submit_tag "Log In", class: "btn", id: "nbl"%>
+<% end %>

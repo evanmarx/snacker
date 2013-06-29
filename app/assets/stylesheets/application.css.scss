@@ -14,8 +14,48 @@
 
 @import "bootstrap";
 
+/* RESET */
 
+html, body, header, footer, section, div, 
+strong, a, img, p, h1, h2, h3, time, ul, li, small {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+/* CLEARFIX */
+
+.group:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+
+/* ELEMENTS */
+
+body {
+	font-family: sans-serif;
+	background: #E4E8F0;
+	color: #333;
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+
+/* SNACKS INDEX */
 
 .snack-image {
 	float: left; 	
 }
+
+
+

@@ -1,0 +1,14 @@
+<div class="trail-snacks group">
+	<% if @trail && @trail.snacks %> 
+		<h2><%= @trail.query %></h2>
+		<ul>
+		<% @trail.snacks.each do |snack| %>
+			<li><a href="<%= snack.traceback_url %>"><img class="snack-image" src="<%= snack.source_url %>"></a></li>
+		<% end %>	
+		</ul>
+	<% else %>
+		<h2>Whoaa there, looks like you've lost your trail.</h2>
+	<% end %>
+
+	
+</div>
