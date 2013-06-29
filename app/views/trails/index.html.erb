@@ -1,0 +1,14 @@
+<h1>All Your Trails</h1>
+
+<% @trails.each do |trail| %>
+
+<h2><%= trail.query %></h2>
+	<ul>
+	<% trail.snacks.each do |snack| %>
+		<li><a href="<%= snack.traceback_url %>"><img class="snack-image" src="<%= snack.source_url %>"></a></li>
+	<% end %>	
+	</ul>
+
+<hr> 
+
+<% end %>
