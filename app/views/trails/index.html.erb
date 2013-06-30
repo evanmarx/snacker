@@ -2,7 +2,29 @@
 
 <ul>
 	<% @trails.each do |trail| %>
-		<li><a href="trails/<%= trail.id %>"><%= trail.query %></a></li>
+		<li class="draggable"><a href="trails/<%= trail.id %>"><%= trail.query %></a></li>
 	<% end %>
 </ul>
 
+
+<script> 
+
+	$(document).ready(function () {
+		
+		$(".draggable").draggable({
+			containment: $("document"),
+			cursor: "move",
+			snap: true,
+			stack: $(".draggable"),
+			stop: function (event, ui) {
+				console.log("hi");
+			}
+		});
+
+		$(".draggable").on("dragstop", function (event, ui) {
+			console.log("another way");
+		});
+ 
+	});
+
+</script> 
