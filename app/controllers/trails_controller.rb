@@ -40,10 +40,12 @@ class TrailsController < ApplicationController
 	end
 
 	def merge_action
-		@old_trail
-		@new_trail 
+		@old_trail = Trail.find(params[:dragged])
+		@new_trail = Trail.find(params[:droppedOn])
 
 		@old_trail.merge_trail(@new_trail)
+
+		render nothing: true
 	end
 
 

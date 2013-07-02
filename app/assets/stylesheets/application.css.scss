@@ -53,11 +53,23 @@ h1 {
 }
 
 
+a {
+	text-decoration: none;
+}
+
+
 /* SNACKS INDEX */
 
 .snack-image {
 	float: left; 	
 }
 
+/* DRAGGING */
 
+.draggable {
+	background-color: red;
+}
 
+.draggable.ui-draggable-dragging {
+	background-color: green;
+}

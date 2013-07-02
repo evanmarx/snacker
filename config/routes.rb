@@ -11,4 +11,5 @@ Websnacks::Application.routes.draw do
 
   match '/login', to: "sessions#new"
 	match '/logout', to: "sessions#destroy" 
+	match 'trails/merge_action', to: "trails#merge_action", via: [:post]
 end

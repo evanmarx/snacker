@@ -2,7 +2,7 @@
 
 <ul>
 	<% @trails.each do |trail| %>
-		<li class="draggable"><a href="trails/<%= trail.id %>"><%= trail.query %></a></li>
+		<li class="draggable" id="trail-group-<%= trail.id %>"><a href="trails/<%= trail.id %>"><%= trail.query %></a></li>
 	<% end %>
 </ul>
 
@@ -11,20 +11,29 @@
 
 	$(document).ready(function () {
 		
-		$(".draggable").draggable({
-			containment: $("document"),
-			cursor: "move",
-			snap: true,
-			stack: $(".draggable"),
-			stop: function (event, ui) {
-				console.log("hi");
-			}
-		});
+		<% @trails.each do |trail| %>
+			$("#trail-group-<%= trail.id %>").draggable({
+				containment: "window",
+				cursor: "move",
+				snap: ".draggable",
+				stack: $(".draggable"),
+				stop: function (event, ui) {
+					
+				}
+			});
 
-		$(".draggable").on("dragstop", function (event, ui) {
-			console.log("another way");
-		});
- 
+			$("#trail-group-<%= trail.id %>").droppable({
+				drop: function (event, ui) {
+					var draggedTrailId = ui.draggable.attr("id").split("-")[2];
+					console.log(draggedTrailId);
+					console.log(<%= trail.id %>)
+					var xhr = new XMLHttpRequest();
+          xhr.open("POST", "http://localhost:3000/trails/merge_action?dragged=" + draggedTrailId + "&droppedOn=" + <%= trail.id %>, true)
+          xhr.send();
+				}
+			});
+ 		<% end %>
+
 	});
 
 </script> 

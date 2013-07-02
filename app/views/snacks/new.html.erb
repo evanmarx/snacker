@@ -1,10 +1,27 @@
-<pre>
-	<%= params %> 
-</pre>
+<pre> 
+	<%= params %>
+</pre> 
 
 <form action="<%= snacks_path %>" method="post">
-	<input type="hidden" name="snack[source_url]" value="<%= params[:srcUrl] %>">
 	<input type="hidden" name="snack[traceback_url]" value="<%= params[:url] %>">
+	<input type="hidden" name="snack[content_type]" value="<%= params[:type] %>">
+
+	<% if params[:type] == "image" %>
+		<input type="hidden" name="snack[source_url]" value="<%= params[:srcUrl] %>">
+	<% elsif params[:type] == "link" %>
+		<input type="hidden" name="snack[source_url]" value="<%= params[:linkUrl] %>">
+	<% elsif params[:type] == "text" %>
+		<input type="hidden" name="snack[selected_text]" value="<%= params[:selectionText] %>">
+	<% end %>
+
+	<h1><%= params[:type].capitalize %></h1>
+
+	<% if params[:type] == "image" %>
+		<p>Preview</p>
+		<img src="<%= params[:srcUrl] %>" height="200px" width="200px">
+	<% end %> 
+
+	<br>
 
 	<select name="snack[trail_id]">
 		<% @trails.each do |trail| %>
@@ -13,15 +30,17 @@
 	</select> 
 
 	<br>
-	<input type="radio" name="snack[content_type]" value="image" <%= "checked" if params[:type] == "image" %> >Image
-	<br>
-	<input type="radio" name="snack[content_type]" value="text" <%= "checked" if params[:type] == "text" %>>Text
-	<br>
-	<input type="radio" name="snack[content_type]" value="link" <%= "checked" if params[:type] == "link" %>>Link
-	<br>
-	<input type="radio" name="snack[content_type]" value="page" <%= "checked" if params[:type] == "page" %>>Whole Page
-	<br>
-
 
 	<input type="submit" name="commit" value="Snack!">
 </form> 
+
+
+<script> 
+
+	$(document).ready(function () {
+		
+		
+
+	})
+
+</script>
