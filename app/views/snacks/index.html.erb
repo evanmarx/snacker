@@ -2,6 +2,15 @@
 
 <ul>
 <% @snacks.each do |snack| %>
-	<li><a href="<%= snack.traceback_url %>"><img class="snack-image" src="<%= snack.source_url %>"></a></li>
+	<% if snack.content_type == "image" %>
+		<li><a href="<%= snack.traceback_url %>"><img class="snack-image" src="<%= snack.source_url %>"></a></li>
+	<% elsif snack.content_type == "text" %>
+		<li>
+			<a href="<%= snack.source_url %>"><%= snack.source_url %></a>
+			<p><%= snack.selected_text %>></p>
+		</li>
+	<% end %>
+		
+
 <% end %>	
 </ul>
